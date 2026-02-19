@@ -1,0 +1,20 @@
+{
+  "version": "4.0",
+  "created_at": "2026-02-15T01:40:51.310757",
+  "user": {
+    "name": "공장장",
+    "timezone": "Asia/Seoul",
+    "language": "ko",
+    "communication_style": "professional"
+  },
+  "ai": {
+    "response_style": "concise",
+    "thinking_display": true,
+    "tone": "friendly-professional"
+  },
+  "preferences": {
+    "summary_length": "medium",
+    "technical_depth": "moderate",
+    "emoji_usage": true
+  }
+}
