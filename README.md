@@ -10,4 +10,4 @@ Roadmap:
 
 [x] 14B LLM Local Integration
 
-[ ] Auto-Python Execution Environment (In Progress) 👈 요거!
+[ ] Auto-Python Execution Environment (In Progress) 👈 요거! 구현하려고 노력중입니다.
