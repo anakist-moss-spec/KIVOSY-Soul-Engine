@@ -1,0 +1,47 @@
+[사용자 입력]
+      │
+      ▼
+┌───────────────────────┐
+│   Gateway (gateway_db)                               │
+│ - 채널 메시지 수신                                   │
+│ - 보안 검사                                          │
+│ - Audit Log 기록                                     │
+└─────────┬─────────────┘
+          │
+          ▼
+┌───────────────────────┐
+│   AI Engine (engine_ai)                               │
+│ - LM Studio API 호출                                  │
+│ - Self-Criticism Audit                                │
+│ - Prompt Injection 방어                               │
+│ - Dangerous Tool Guard                                │
+└─────────┬─────────────┘
+          │
+          ▼
+┌────────────────────────┐
+│ Memory Processor                                       │
+│ (processor_memory)                                     │
+│ - Preferences.json 관리                                │
+│ - Learning.json 관리                                   │
+│ - Session.json 관리                                    │
+│ - Untrusted Layer 격리                                 │
+│ - Master Truth 검증                                    │
+└─────────┬──────────────┘
+          │
+          ▼
+┌────────────────────────┐
+│ Memory Cleaner                                         │
+│ (memory_cleaner)                                       │
+│ - 잘못된 학습 데이터 삭제                               │
+│ - Master Truth 위반 제거                                │
+│ - Role 오류 수정                                       │
+└─────────┬──────────────┘
+          │
+          ▼
+┌────────────────────────┐
+│ Security Core                                          │
+│ (security_core)                                        │
+│ - Prompt Injection 탐지                                │
+│ - Master Truth Table                                   │
+│ - 위험 명령 차단                                       │
+└────────────────────────┘

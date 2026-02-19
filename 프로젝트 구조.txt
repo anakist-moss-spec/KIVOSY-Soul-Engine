@@ -1,0 +1,28 @@
+### 📋 프로젝트 구조:
+
+
+30.Log-Network프로젝트
+
+┌───frontend /
+│	├── app.js
+│	├── style.css
+│	├── index.html
+│	├── whatsapp.html
+│	├── line.html
+│	└── kakao.html
+│
+│
+│
+├── run_server.py                 (호출 대장)# Main Flask entry point and routes
+├── engine_ai.py                  (AI 담당) # AI communication & safe parsing
+├── gateway_db.py               (데이터 저장 담당) # Data persistence & node management
+├── processor_memory.py      (기억력 담당) # Memory system & learning extraction
+├── memory /                     (세부 기억 폴더)   # (existing folder - keeps all JSON files)
+│	├── session.json
+│	├── preferences.json
+│	└── learning.json
+│
+│
+│                 
+├── frontend /                     (대시보드 화면 폴더)   # (existing folder - keeps all HTML/CSS/JS)
+└── nodes.json                     (메시지 기록) # (existing file - preserved)
