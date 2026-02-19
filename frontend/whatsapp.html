@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIVOSY 왓츠앱 메신저</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: #111b21; color: #e9edef; display: flex; flex-direction: column; height: 100vh; }
+        
+        /* 헤더 */
+        header { background: #202c33; padding: 10px 20px; display: flex; align-items: center; border-bottom: 1px solid #374045; }
+        header h2 { font-size: 16px; margin: 0; color: #00a884; }
+
+        /* 대화창 (위쪽) */
+        #chat-window { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px; background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); /* 왓츠앱 배경 느낌 */ }
+        
+        .bubble { max-width: 70%; padding: 8px 12px; border-radius: 8px; font-size: 14px; line-height: 1.5; position: relative; }
+        .user { align-self: flex-end; background: #005c4b; color: #e9edef; border-bottom-right-radius: 2px; }
+        .ai { align-self: flex-start; background: #202c33; color: #e9edef; border-bottom-left-radius: 2px; }
+        .thinking { font-size: 11px; color: #8696a0; margin-bottom: 4px; display: block; }
+
+        /* 입력창 (아래쪽) */
+        footer { background: #202c33; padding: 10px; display: flex; gap: 10px; align-items: flex-end; }
+        textarea { flex: 1; background: #2a3942; color: white; border: none; border-radius: 8px; padding: 10px; font-size: 15px; resize: none; outline: none; height: 45px; }
+        button { background: #00a884; color: white; border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; font-weight: bold; flex-shrink: 0; }
+        button:disabled { background: #555; }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>🟢 14B 과장님 (Active Now)</h2>
+    </header>
+
+    <div id="chat-window">
+        <div class="bubble ai">공장장님, 무엇을 도와드릴까요? (Master Truth 활성화됨)</div>
+    </div>
+
+    <footer>
+        <textarea id="msg" placeholder="메시지 입력..." onkeypress="handleEnter(event)"></textarea>
+        <button id="send-btn" onclick="send()">전송</button>
+    </footer>
+
+    <script>
+        const chatWindow = document.getElementById('chat-window');
+        const msgField = document.getElementById('msg');
+        const sendBtn = document.getElementById('send-btn');
+
+        // 엔터치면 바로 전송 (Shift+Enter는 줄바꿈)
+        function handleEnter(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                send();
+            }
+        }
+
+        async function send() {
+            const content = msgField.value.trim();
+            if(!content) return;
+
+            // 1. 사용자 메시지 화면에 추가
+            addBubble('user', content);
+            msgField.value = ''; // 입력창 즉시 비우기 (del키 노가다 해방!)
+            msgField.style.height = '45px';
+
+            sendBtn.disabled = true;
+
+            try {
+                const res = await fetch('/api/whatsapp', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        sender: '공장장(WhatsApp)', 
+                        content: content,
+                        channel: 'whatsapp'
+                    })
+                });
+
+                const data = await res.json();
+
+                if(res.ok) {
+                    // 2. AI 대답 화면에 추가
+                    const aiText = data.summary || data.raw || "응답을 처리할 수 없습니다.";
+                    const thinking = data.thinking ? `💭 ${data.thinking}` : "";
+                    addBubble('ai', aiText, thinking);
+                }
+            } catch(e) {
+                addBubble('ai', "❌ 서버 연결 실패! 김수석을 불러주세요.");
+            } finally {
+                sendBtn.disabled = false;
+                chatWindow.scrollTop = chatWindow.scrollHeight; // 최신 대화로 스크롤
+            }
+        }
+
+        function addBubble(type, text, thinking = "") {
+            const div = document.createElement('div');
+            div.className = `bubble ${type}`;
+            
+            let html = "";
+            if(thinking) html += `<span class="thinking">${thinking}</span>`;
+            html += `<span>${text}</span>`;
+            
+            div.innerHTML = html;
+            chatWindow.appendChild(div);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    </script>
+</body>
+</html>

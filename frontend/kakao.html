@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIVOSY 카톡 송신기</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #1a1a1e; color: white; }
+        textarea { width: 100%; height: 150px; background: #2d2d32; color: white; border: 1px solid #444; border-radius: 10px; padding: 10px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; margin-top: 10px; background: #ff9500; border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>🚀 14B 과장님께 보고</h2>
+    <textarea id="msg" placeholder="카톡 내용을 여기 붙여넣으세요..."></textarea>
+    <button onclick="send()">전송하기</button>
+
+    <script>
+        async function send() {
+            const btn = document.querySelector('button');
+            const msgField = document.getElementById('msg');
+            const content = msgField.value;
+
+            if(!content) return alert("내용을 입력하세요!");
+
+            // 1. 버튼 상태 변경 (기강 잡기)
+            btn.disabled = true;
+            btn.innerText = "⏳ 야간 과장 분석 중...";
+            btn.style.background = "#555";
+
+            try {
+                const res = await fetch('/api/kakao', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sender: '공장장(Mobile)', content: content })
+                });
+
+                if(res.ok) {
+                    alert('✅ 과장님이 보고를 접수했습니다!');
+                    msgField.value = ''; // 입력창 비우기
+                }
+            } catch(e) {
+                alert('❌ 서버 연결 실패!');
+            } finally {
+                // 2. 버튼 복구
+                btn.disabled = false;
+                btn.innerText = "전송하기";
+                btn.style.background = "#ff9500";
+            }
+        }
+    </script>
+</body>
+</html>

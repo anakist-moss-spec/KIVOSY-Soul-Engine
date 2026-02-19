@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIVOSY 라인 송신기</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #1a1a1e; color: white; }
+        textarea { width: 100%; height: 150px; background: #2d2d32; color: white; border: 1px solid #444; border-radius: 10px; padding: 10px; box-sizing: border-box; }
+        /* 라인 전용 색상 #06C755 */
+        button { width: 100%; padding: 15px; margin-top: 10px; background: #06C755; border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>💚 LINE -> 14B 과장님 보고</h2>
+    <textarea id="msg" placeholder="라인 대화 내용을 여기 붙여넣으세요..."></textarea>
+    <button onclick="send()">전송하기</button>
+
+    <script>
+        async function send() {
+            const btn = document.querySelector('button');
+            const msgField = document.getElementById('msg');
+            const content = msgField.value;
+
+            if(!content) return alert("내용을 입력하세요!");
+
+            btn.disabled = true;
+            btn.innerText = "⏳ 라인 데이터 분석 중...";
+            btn.style.background = "#555";
+
+            try {
+                // 서버의 /api/line 엔드포인트로 쏩니다. (클로드가 만들 예정)
+                const res = await fetch('/api/line', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        sender: '공장장(LINE)', 
+                        content: content,
+                        channel: 'line' // 'line' 채널 인식표 부착!
+                    })
+                });
+
+                if(res.ok) {
+                    alert('✅ 라인 보고가 완료되었습니다!');
+                    msgField.value = ''; 
+                }
+            } catch(e) {
+                alert('❌ 서버 연결 실패!');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "전송하기";
+                btn.style.background = "#06C755";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIVOSY Global Multi-Channel Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 (Header) -->
+        <div class="header">
+            <div style="display:flex; align-items:center; gap:15px;">
+                <div style="font-size:30px">🧠</div>
+                <div>
+                    <h1 style="margin:0; font-size:26px;">KIVOSY Log-Network</h1>
+                    <div style="font-size:12px; color:gray; margin-top:4px;">
+                        Global Multi-Channel AI Infrastructure v3.0
+                    </div>
+                </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05); padding:8px 15px; border-radius:20px; font-size:13px;">
+                <span style="color:#4CAF50">●</span> System Online
+            </div>
+        </div>
+
+        <!-- 통계 그리드 (Stats Grid) -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div style="font-size:11px; color:gray; text-transform:uppercase; letter-spacing:1px;">
+                    TOTAL NODES
+                </div>
+                <div class="stat-value" id="totalNodes">0</div>
+                <div style="font-size:12px; color:gray; margin-top:5px;">
+                    전체 캡처 노드
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div style="font-size:11px; color:gray; text-transform:uppercase; letter-spacing:1px;">
+                    ACTIVE CHANNELS
+                </div>
+                <div class="stat-value" id="channelCount">0</div>
+                <div style="font-size:12px; color:gray; margin-top:5px;">
+                    활성 채널 수
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div style="font-size:11px; color:gray; text-transform:uppercase; letter-spacing:1px;">
+                    THINKING ENHANCED
+                </div>
+                <div class="stat-value" id="thinkingNodes">0</div>
+                <div style="font-size:12px; color:gray; margin-top:5px;">
+                    AI 사고 분석 완료
+                </div>
+            </div>
+        </div>
+
+        <!-- 채널 필터 섹션 (Channel Filter Section) -->
+        <div class="filter-section">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div>
+                    <h2 style="font-size:20px; font-weight:700; margin:0;">
+                        📊 Knowledge Graph
+                    </h2>
+                    <div style="font-size:13px; color:gray; margin-top:4px;">
+                        실시간 AI 분석 결과
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 채널 필터 버튼 (Channel Filter Buttons) -->
+            <div class="channel-filters">
+                <button class="filter-btn active" data-channel="all" onclick="setChannelFilter('all')">
+                    <span class="filter-icon">🌍</span>
+                    <span class="filter-label">전체</span>
+                    <span class="filter-count">0</span>
+                </button>
+                
+                <button class="filter-btn" data-channel="kakao" onclick="setChannelFilter('kakao')">
+                    <span class="filter-icon">💬</span>
+                    <span class="filter-label">KakaoTalk</span>
+                    <span class="filter-count">0</span>
+                </button>
+                
+                <button class="filter-btn" data-channel="whatsapp" onclick="setChannelFilter('whatsapp')">
+                    <span class="filter-icon">🟢</span>
+                    <span class="filter-label">WhatsApp</span>
+                    <span class="filter-count">0</span>
+                </button>
+                
+                <button class="filter-btn" data-channel="line" onclick="setChannelFilter('line')">
+                    <span class="filter-icon">💚</span>
+                    <span class="filter-label">LINE</span>
+                    <span class="filter-count">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 노드 그리드 (Nodes Grid) -->
+        <div class="nodes-grid" id="nodesGrid">
+            <!-- 노드 카드가 동적으로 삽입됩니다 -->
+        </div>
+
+        <!-- 빈 상태 (Empty State) -->
+        <div id="emptyState" style="display:none; text-align:center; padding:100px 20px;">
+            <div style="font-size:64px; margin-bottom:20px;">🎯</div>
+            <div style="font-size:24px; font-weight:bold; margin-bottom:10px;">
+                데이터 대기 중...
+            </div>
+            <div style="color:gray; font-size:14px;">
+                채널로 메시지를 전송하면 여기에 표시됩니다.
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

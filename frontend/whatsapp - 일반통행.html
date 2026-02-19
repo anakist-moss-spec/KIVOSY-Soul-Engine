@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIVOSY 왓츠앱 컨트롤러</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #1a1a1e; color: white; }
+        textarea { width: 100%; height: 120px; background: #2d2d32; color: white; border: 1px solid #444; border-radius: 10px; padding: 10px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; margin-top: 10px; background: #25D366; border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; }
+        #response-area { margin-top: 20px; padding: 15px; background: #25252b; border-radius: 10px; border-left: 5px solid #25D366; display: none; }
+        .thinking { color: #888; font-style: italic; font-size: 0.9em; margin-bottom: 10px; }
+        .answer { color: #fff; line-height: 1.5; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h2>🟢 14B 과장님 양방향 채널</h2>
+    <textarea id="msg" placeholder="명령을 입력하세요 (예: D드라이브에 파일 만들어)"></textarea>
+    <button onclick="send()">전송 및 결과 확인</button>
+
+    <div id="response-area">
+        <div class="thinking" id="ai-thinking"></div>
+        <div class="answer" id="ai-answer"></div>
+    </div>
+
+    <script>
+        async function send() {
+            const btn = document.querySelector('button');
+            const msgField = document.getElementById('msg');
+            const respArea = document.getElementById('response-area');
+            const thinkingField = document.getElementById('ai-thinking');
+            const answerField = document.getElementById('ai-answer');
+            const content = msgField.value;
+
+            if(!content) return alert("내용을 입력하세요!");
+
+            btn.disabled = true;
+            btn.innerText = "⏳ 14B 과장이 생각 중...";
+            respArea.style.display = "none";
+
+            try {
+                const res = await fetch('/api/whatsapp', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        sender: '공장장(WhatsApp)', 
+                        content: content,
+                        channel: 'whatsapp'
+                    })
+                });
+
+                const data = await res.json(); // 서버에서 준 답변(AI 응답)을 받습니다!
+
+                if(res.ok) {
+                    respArea.style.display = "block";
+                    // 자비스의 속마음(Thinking)과 최종 답변을 화면에 뿌려줍니다.
+                    thinkingField.innerText = "💭 " + (data.thinking || "추론 중...");
+                    answerField.innerText = "🤖 " + (data.summary || data.raw || "답변을 가져오지 못했습니다.");
+                    msgField.value = '';
+                }
+            } catch(e) {
+                alert('❌ 서버 연결 실패!');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "전송하기";
+            }
+        }
+    </script>
+</body>
+</html>
