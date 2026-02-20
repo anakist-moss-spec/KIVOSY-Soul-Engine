@@ -1,9 +1,3 @@
-"This engine doesn't just run code; it learns the user's soul through sessions and preferences."
-
-
-(이 엔진은 단순히 코드를 실행하는 게 아니라, 세션과 설정을 통해 사용자의 영혼을 배웁니다.)
-
-
 Roadmap:
 
 [x] AI Memory System (Preferences & Learning)
@@ -15,7 +9,8 @@ Roadmap:
 
 # KIVOSY AI - Personal AI Infrastructure
 
-This engine doesn't just run code; it learns the user's soul through sessions and preferences.
+"This engine doesn't just run code; it learns the user's soul through sessions and preferences."
+(이 엔진은 단순히 코드를 실행하는 게 아니라, 세션과 설정을 통해 사용자의 영혼을 배웁니다.)
 
 ## 🚀 Roadmap
 
@@ -47,10 +42,11 @@ This engine doesn't just run code; it learns the user's soul through sessions an
 - Self-Criticism Engine
 
 ### 📊 **Stats**
-- **5+ months** of development
-- **1000+ commits**
+- **1 vision**: Human
 - **3 AI assistants**: Gemini + DeepSeek + Claude
-- **1 vision**: AGI Secretary
+- **1000+ commits**
+- - **3 verification**: Grok + Chatgpt + Copilot
+
 
 ## 📁 Project Structure
 ```
