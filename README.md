@@ -76,6 +76,7 @@ python run_server.py
 
 # 4. Open browser
 http://localhost:5000
+```
 
 🛡️ Safety First
 Every physical action requires human approval
