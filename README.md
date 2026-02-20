@@ -84,10 +84,10 @@ http://localhost:5000
 We're working on safe, sandboxed Python execution environment for AI-generated code.
 
 ## 🤝 Contributors
-- Gemini (김수석) - Memory & Soul Engine
-- DeepSeek (딥시크) - Security & Architecture
-- Claude - Chief Security Architect
 - Factory Owner - Vision & Direction
+- Gemini (김수석) - Memory & Soul Engine
+- DeepSeek (딥시크과장) - Security & Architecture
+- Claude (클로드과장) - Chief Security Architect
 
 ## 📜 License
 KIVOSY Public License v1.0
