@@ -3,6 +3,61 @@
 
 30.Log-Network프로젝트
 
+v5
+kivosy_v5/
+├── core/
+│   ├── __init__.py
+│   ├── channel_auth.py      # ChannelAuthenticator only
+│   ├── threat_detection.py   # PromptInjection + DangerousToolGuard
+│   ├── master_truth.py       # MasterTruthTable only
+│   ├── self_criticism.py     # SelfCriticismEngine only
+│   └── audit_log.py          # CommandAuditLog only
+│
+├── memory/
+│   ├── __init__.py
+│   ├── mood_context.py       # 감정 기억
+│   ├── proactive_actions.py  # ProactiveAction
+│   ├── learning_engine.py    # 학습 추출
+│   └── soul_engine.py        # SoulEngine
+│
+├── physical/                  # 🔥 NEW MODULE
+│   ├── __init__.py
+│   ├── executor.py            # PyAutoGUI base controller
+│   ├── vision.py              # Computer Vision (OpenCV)
+│   ├── window_manager.py      # pygetwindow
+│   ├── sandbox.py             # Isolated execution environment
+│   ├── failsafe.py            # Emergency stop (FAILSAFE)
+│   └── two_factor.py          # Human-in-the-loop approval
+│
+├── gateway/
+│   ├── __init__.py
+│   ├── channel_gateway.py     # Main message processor (clean version)
+│   └── skill_library.py       # Skills only (save_meeting_notes, etc.)
+│
+├── api/                        # 🔥 NEW MODULE
+│   ├── __init__.py
+│   ├── flask_server.py         # run_server.py (thin)
+│   ├── routes_channels.py      # /api/kakao, /api/whatsapp
+│   ├── routes_memory.py        # /api/memory/*
+│   ├── routes_physical.py      # /api/physical/* (new)
+│   └── routes_game.py          # /api/v1/game/vibe
+│
+├── security_monitor/           # 🔥 NEW MODULE
+│   ├── __init__.py
+│   ├── process_watcher.py      # Detect suspicious processes
+│   ├── network_shield.py       # Monitor inbound connections
+│   ├── file_guardian.py        # File integrity monitoring
+│   └── alert_system.py         # Red screen + audio alerts
+│
+└── utils/
+    ├── __init__.py
+    ├── safe_parser.py          # SafeAPIParser
+    └── logger.py               # Unified logging
+
+
+
+--------------------------------------------------
+v4
 ┌───frontend /
 │	├── app.js
 │	├── style.css
