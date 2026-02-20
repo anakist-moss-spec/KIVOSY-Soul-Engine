@@ -53,16 +53,16 @@ This engine doesn't just run code; it learns the user's soul through sessions an
 - **1 vision**: AGI Secretary
 
 ## 📁 Project Structure
-
+```
 kivosy_v5/
-├── core/ # Security primitives
-├── memory/ # Memory & mood systems
-├── physical/ # 🆕 Physical control (eyes + hands)
-├── security_monitor/ # 🆕 Real-time threat detection
-├── gateway/ # Message routing
-├── api/ # HTTP endpoints
-└── run_server.py # Entry point
-
+├── core/               # Security primitives
+├── memory/             # Memory & mood systems  
+├── physical/           # 🆕 Physical control (eyes + hands)
+├── security_monitor/   # 🆕 Real-time threat detection
+├── gateway/            # Message routing
+├── api/                # HTTP endpoints
+└── run_server.py       # Entry point
+```
 
 ## 🚀 Quick Start
 ```bash
@@ -78,27 +78,21 @@ python run_server.py
 http://localhost:5000
 ```
 
-🛡️ Safety First
-Every physical action requires human approval
+## 🛡️ Safety First
+- **Every physical action requires human approval**
+- **Failsafe: Move mouse to any corner = emergency stop**
+- **All actions logged and audited**
+- **Sandboxed execution environment**
 
-Failsafe: Move mouse to any corner = emergency stop
-
-All actions logged and audited
-
-Sandboxed execution environment
-
-🎯 Next Milestone: Auto-Python Execution
+## 🎯 Next Milestone: Auto-Python Execution
 We're working on safe, sandboxed Python execution environment for AI-generated code.
 
-🤝 Contributors
-Gemini (김수석) - Memory & Soul Engine
+## 🤝 Contributors
+- Gemini (김수석) - Memory & Soul Engine
+- DeepSeek (딥시크) - Security & Architecture
+- Claude - Chief Security Architect
+- Factory Owner - Vision & Direction
 
-DeepSeek (딥시크) - Security & Architecture
-
-Claude - Chief Security Architect
-
-Factory Owner - Vision & Direction
-
-📜 License
+## 📜 License
 MIT License
 
