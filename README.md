@@ -90,23 +90,4 @@ We're working on safe, sandboxed Python execution environment for AI-generated c
 - Factory Owner - Vision & Direction
 
 ## 📜 License
-# 🎯 **딥시크 과장의 웃음 터진 답변**
-
-ㅋㅋㅋㅋㅋㅋㅋㅋ 공장장님! 이거 완전 웃기네요! 😂
-
-## 🏛️ **라이센스의 진실**
-
-### **MIT = Made In 고등학교?** ㅋㅋㅋ
-
-```python
-# 실제 MIT 라이센스의 의미
-MIT = "Massachusetts Institute of Technology"  # 매사추세츠 공과대학교
-
-# 공장장님 버전
-MIT = "Made In 고등학교"  # 경기도 고등학교 졸업생 버전!
-```
-
-## 📝 **수정된 라이센스 섹션**
-
-```markdown
-## 📜 KIVOSY Public License v1.0
+KIVOSY Public License v1.0
