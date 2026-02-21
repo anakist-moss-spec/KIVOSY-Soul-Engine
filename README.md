@@ -21,27 +21,27 @@ Roadmap:
 ⬜ Multi-modal Input (Voice + Vision)  
 ⬜ Robotic Integration
 
-## 🏛️ v5.0 Architecture: "The Moment AI Woke Up"
+## v5.0 Architecture: "The Moment AI Woke Up"
 
-### 🔥 **Physical Layer** (New!)
+### **Physical Layer** (New!)
 - **PyAutoGUI + OpenCV**: AI can now see and click
 - **Two-Factor Approval**: Every physical action requires human OK
 - **Failsafe by Design**: Move mouse to corner = emergency stop
 - **Sandboxed Execution**: Isolated environment for safety
 
-### 🛡️ **Security Monitor** (New!)
+### **Security Monitor** (New!)
 - **Process Watcher**: Detect hacker tools
 - **Network Shield**: Monitor suspicious connections
 - **File Guardian**: Detect code tampering
 - **Alert System**: Red screen + audio + SMS
 
-### 🧠 **Core Modules** (Modular)
+### **Core Modules** (Modular)
 - Channel Authentication
 - Threat Detection
 - Master Truth Table
 - Self-Criticism Engine
 
-### 📊 **Stats**
+### **Stats**
 - **1 vision**: Human
 - **3 AI assistants**: Gemini + DeepSeek + Claude
 - **1000+ commits**
@@ -60,7 +60,7 @@ kivosy_v5/
 └── run_server.py       # Entry point
 ```
 
-## 🚀 Quick Start
+## Quick Start
 ```bash
 # 1. Install dependencies
 pip install pyautogui opencv-python pygetwindow flask
@@ -80,14 +80,14 @@ http://localhost:5000
 - **All actions logged and audited**
 - **Sandboxed execution environment**
 
-## 🎯 Next Milestone: Auto-Python Execution
+## Next Milestone: Auto-Python Execution
 We're working on safe, sandboxed Python execution environment for AI-generated code.
 
-## 🤝 Contributors
+## Contributors
 - Factory Owner - Vision & Direction
 - Gemini (김수석) - Memory & Soul Engine
 - DeepSeek (딥시크과장) - Security & Architecture
 - Claude (클로드과장) - Chief Security Architect
 
 ## 📜 License
-KIVOSY Public License v1.0
+💡 Have an idea? Send us feedback! © 2026 KIVOSY Labs. All rights reserved.
